@@ -15,23 +15,25 @@ export function isValidDayId(id: string): id is TrainingDayId {
 
 export function getDayById(
   days: RoutineDay[],
-  id: TrainingDayId
+  id: TrainingDayId,
 ): RoutineDay | undefined {
   return days.find((day) => day.id === id);
 }
 
 export function getExerciseById(
   day: RoutineDay,
-  exerciseId: string
+  exerciseId: string,
 ): Exercise | undefined {
   return day.exercises.find((exercise) => exercise.id === exerciseId);
 }
 
 export function getAdjacentExercises(
   day: RoutineDay,
-  exerciseId: string
+  exerciseId: string,
 ): { prev: Exercise | null; next: Exercise | null } {
-  const index = day.exercises.findIndex((exercise) => exercise.id === exerciseId);
+  const index = day.exercises.findIndex(
+    (exercise) => exercise.id === exerciseId,
+  );
   if (index === -1) {
     return { prev: null, next: null };
   }
@@ -53,6 +55,7 @@ const legsGluteIsquio: Exercise[] = [
     description:
       "Extensión de cadera para glúteo mayor. Ideal para fuerza y forma en la parte superior del movimiento.",
     tips: [
+      "Antes de las series efectivas, haz 1–2 series de calentamiento con ~50–70% del peso de trabajo.",
       "Aprieta glúteos arriba y mantén el mentón ligeramente metido.",
       "No hiperextiendas la lumbar: el movimiento sale de la cadera.",
       "Elige un peso donde las últimas 2 reps cuesten, pero el bloqueo arriba siga limpio.",
@@ -119,6 +122,36 @@ const legsGluteIsquio: Exercise[] = [
     ],
     videoUrl: "https://youtube.com/shorts/ty1qWiKgOTM?si=Bxux76xnfeLY_soR",
   },
+  {
+    id: "legs-gi-6",
+    name: "Crunch en polea",
+    sets: 3,
+    reps: "10-15",
+    rest: "0.75-1 min",
+    description:
+      "Flexión de tronco en polea alta con soga: aislamiento del recto abdominal con carga progresiva.",
+    tips: [
+      "De rodillas frente a la polea; soga a los lados de la cabeza; crunch con los abs, no con los brazos.",
+      "Cadera quieta: no tires con la cadera ni uses impulso.",
+      "Peso para 10–15 limpios; aprieta abajo 1 segundo y sube con control.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=aBd6T01PBqw",
+  },
+  {
+    id: "legs-gi-7",
+    name: "Plancha lateral",
+    sets: 3,
+    reps: "20-40s/lado",
+    rest: "0.75-1 min",
+    description:
+      "Isométrico de oblicuos y estabilidad lateral: anti-flexión lateral con poco estrés lumbar.",
+    tips: [
+      "Codo bajo el hombro; cuerpo en línea recta; cadera elevada sin hundirte.",
+      "Pies apilados (o rodillas apoyadas si necesitas regresión).",
+      "Aguanta 20–40 s por lado cerca del límite de forma estable; cambia de lado.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=cSIWldRoKTo",
+  },
 ];
 
 /** Piernas: cuádriceps / fuerza */
@@ -132,6 +165,7 @@ const legsCuadFuerza: Exercise[] = [
     description:
       "Sentadilla guiada para cuádriceps con carga alta y trayectoria estable.",
     tips: [
+      "Antes de las series efectivas, haz 1–2 series de calentamiento con ~50–70% del peso de trabajo.",
       "Espalda pegada al respaldo; baja con control hasta profundidad segura.",
       "No rebotes abajo: pausa breve y empuja por el talón/medio pie.",
       "Peso pesado pero limpio: si las rodillas fallan o se despega la espalda, baja carga.",
@@ -198,6 +232,36 @@ const legsCuadFuerza: Exercise[] = [
     ],
     videoUrl: "https://youtube.com/shorts/76uNT_VMhPI?si=xV3738vgbQa4kSoJ",
   },
+  {
+    id: "legs-cf-6",
+    name: "Elevaciones de rodillas colgado",
+    sets: 3,
+    reps: "10-15",
+    rest: "0.75-1 min",
+    description:
+      "Elevación de rodillas en barra (o captain’s chair): recto abdominal y control de pelvis.",
+    tips: [
+      "Sin balanceo: inicia con pelvis en retroversión y sube rodillas al pecho.",
+      "Si no hay barra, usa captain’s chair / máquina de elevaciones con la misma intención.",
+      "Baja en 2–3 segundos; últimas reps duras sin impulso de piernas.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=iUqV5q_ENXU",
+  },
+  {
+    id: "legs-cf-7",
+    name: "Pallof press en polea",
+    sets: 3,
+    reps: "10-12/lado",
+    rest: "0.75-1 min",
+    description:
+      "Press anti-rotación en polea a altura de pecho: oblicuos y estabilidad del tronco bajo tensión.",
+    tips: [
+      "Polea a pecho con agarre; de lado al stack; manos al pecho y empuja hacia adelante sin girar el tronco.",
+      "Pies firmes, glúteos activos; resiste el tirón de la polea.",
+      "Misma carga y reps en ambos lados; si rotas, baja el peso del stack.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=nB4QoM4eFfU",
+  },
 ];
 
 /** Piernas: completo / volumen (3er día) */
@@ -206,14 +270,15 @@ const legsCompletoVolumen: Exercise[] = [
     id: "legs-cv-1",
     name: "Sentadilla goblet",
     sets: 4,
-    reps: "8-12",
+    reps: "10-15",
     rest: "1.5-2 min",
     description:
       "Sentadilla con mancuerna al pecho: patrón completo, cuádriceps y core con técnica accesible.",
     tips: [
+      "Antes de las series efectivas, haz 1–2 series de calentamiento con ~50–70% del peso de trabajo.",
       "Codos entre rodillas; torso erguido; baja controlado.",
       "Talones firmes en el suelo; no te inclines en exceso hacia adelante.",
-      "Peso que permita profundidad y ritmo constante las 8–12 reps.",
+      "Peso que permita profundidad y ritmo constante las 10–15 reps; últimas reps exigentes.",
     ],
     videoUrl: "https://www.youtube.com/watch?v=MeIiIdhvXT4",
   },
@@ -221,14 +286,14 @@ const legsCompletoVolumen: Exercise[] = [
     id: "legs-cv-2",
     name: "Zancadas caminando",
     sets: 3,
-    reps: "10-12/pierna",
+    reps: "12-15/pierna",
     rest: "1.25-1.5 min",
     description:
       "Desplazamiento unilateral para cuádriceps, glúteo y estabilidad dinámica.",
     tips: [
       "Paso largo; rodilla delantera estable; torso casi vertical.",
       "No dejes que la rodilla se vaya hacia dentro al aterrizar.",
-      "Mancuernas ligeras-medias: la calidad del paso manda sobre la carga.",
+      "Mancuernas ligeras-medias: la calidad del paso manda sobre la carga; llega cerca del fallo en 12–15.",
     ],
     videoUrl: "https://www.youtube.com/watch?v=D7KaRcUTQeE",
   },
@@ -239,7 +304,7 @@ const legsCompletoVolumen: Exercise[] = [
     reps: "10-12",
     rest: "1-1.5 min",
     description:
-      "Curl de isquios en posición sentada: buen estirón y control en otro ángulo que el acostado.",
+      "Curl de isquios sentado: mejor estímulo de hipertrofia en posición alargada que el acostado.",
     tips: [
       "Controla la fase excéntrica; no uses impulso.",
       "Cadera quieta en el asiento; no rebotes al final del curl.",
@@ -249,6 +314,36 @@ const legsCompletoVolumen: Exercise[] = [
   },
   {
     id: "legs-cv-4",
+    name: "Patada en máquina",
+    sets: 3,
+    reps: "12-15/pierna",
+    rest: "0.75-1 min",
+    description:
+      "Extensión de cadera en máquina de patada: aislamiento de glúteo con trayectoria guiada.",
+    tips: [
+      "Talón en la palanca; empuja con el glúteo, no arqueando la lumbar.",
+      "Pelvis neutra y cuadrada; no gires el tronco al patear.",
+      "Aprieta arriba 1 segundo; carga moderada con control, no impulso.",
+    ],
+    videoUrl: "https://www.youtube.com/shorts/3fBptAH0Rnw",
+  },
+  {
+    id: "legs-cv-5",
+    name: "Extensiones de cuádriceps en máquina",
+    sets: 3,
+    reps: "10-12",
+    rest: "1-1.5 min",
+    description:
+      "Aislamiento de cuádriceps para rematar el día completo con bombeo controlado.",
+    tips: [
+      "Extiende sin bloquear de golpe; controla la bajada.",
+      "Cadera fija en el asiento: no uses impulso de tronco.",
+      "Busca ardor limpio en 10–12; si balanceas, reduce el peso.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=uM86QE59Tgc",
+  },
+  {
+    id: "legs-cv-6",
     name: "Abductores en máquina",
     sets: 3,
     reps: "12-15",
@@ -260,75 +355,151 @@ const legsCompletoVolumen: Exercise[] = [
       "Abre con intención y vuelve sin soltar el peso.",
       "Carga moderada: prioriza sentir el glúteo lateral, no el ego del stack.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=7HylKT7G-EA",
+    videoUrl: "https://www.youtube.com/watch?v=G_8LItOiZ0Q",
   },
   {
-    id: "legs-cv-5",
-    name: "Step-ups con mancuerna",
+    id: "legs-cv-7",
+    name: "Rueda abdominal",
     sets: 3,
-    reps: "8-10/pierna",
-    rest: "1.25-1.5 min",
+    reps: "8-12",
+    rest: "0.75-1 min",
     description:
-      "Subida a banco con carga: cuádriceps y glúteo unilateral con transferencia funcional.",
+      "Rollout desde rodillas: anti-extensión del core con alta demanda del recto abdominal.",
     tips: [
-      "Empuja con la pierna de arriba; no te impulsees con la de abajo.",
-      "Banco a altura de rodilla o un poco menos; controla la bajada.",
-      "Mismo peso en ambas piernas; si una falla la técnica, baja carga.",
+      "Desde rodillas; core firme y pelvis neutra: no dejes que la lumbar se hunda.",
+      "Rueda solo hasta donde controles; vuelve empujando con los abs, no con la cadera.",
+      "Si arquear es inevitable, acorta el recorrido o usa menos distancia.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=DxUNi119Qzs",
+    videoUrl: "https://www.youtube.com/watch?v=iqbHU4M4Y2w",
+  },
+  {
+    id: "legs-cv-8",
+    name: "Bicycle crunch",
+    sets: 3,
+    reps: "12-15/lado",
+    rest: "0.75-1 min",
+    description:
+      "Crunch con rotación controlada: recto abdominal y oblicuos en tempo lento.",
+    tips: [
+      "Lumbar pegada al suelo; manos detrás de la cabeza sin tirar del cuello.",
+      "Codo hacia rodilla contraria con rotación de tronco, no con tirones.",
+      "Tempo lento: calidad sobre velocidad; cerca del fallo en 12–15 por lado.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=PAEo-zRSanM",
   },
 ];
 
 const pushExercises: Exercise[] = [
   {
     id: "push-1",
-    name: "Press banca barra",
+    name: "Press pecho alto en máquina",
     sets: 4,
     reps: "7-10",
     rest: "2-3 min",
     description:
-      "Empuje horizontal principal para pecho, hombros delanteros y tríceps.",
+      "Press inclinado guiado para pecho superior (clavicular) con trayectoria estable.",
     tips: [
-      "Controla la bajada; codos a ~45° respecto al torso.",
-      "Escápulas retraídas y pies firmes; no rebotes en el pecho.",
-      "Peso para 7–10 limpios: si la barra baila o se acorta el rango, reduce.",
+      "Antes de las series efectivas, haz 1–2 series de calentamiento con ~50–70% del peso de trabajo.",
+      "Ajusta el asiento para que las manijas queden a la altura del pecho alto.",
+      "Escápulas pegadas al respaldo; no dejes que los hombros se adelanten.",
+      "Empuja con control; últimas reps duras sin rebotar ni acortar el rango.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=rT7DgCr-3pg",
+    videoUrl: "https://www.youtube.com/watch?v=whaV86_J6HY",
   },
   {
     id: "push-2",
-    name: "Press inclinado mancuernas",
+    name: "Press pecho medio en máquina",
     sets: 4,
     reps: "7-10",
     rest: "2-3 min",
     description:
-      "Press en banco inclinado para pecho superior y estabilizadores con mancuernas.",
+      "Press horizontal en máquina para pecho medio: volumen principal con buena seguridad.",
     tips: [
-      "Baja con control hasta estirón cómodo; no choques las mancuernas arriba.",
-      "Muñecas neutras; evita abrir excesivamente los codos.",
-      "Carga desafiante en 7–10: últimas reps difíciles sin perder el recorrido.",
+      "Manijas a la altura del pecho medio (línea de pezones).",
+      "Muñecas neutras; codos ~45° respecto al torso.",
+      "No bloquees de golpe arriba; mantén tensión en pecho.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=8iPEnn-ltC8",
+    videoUrl: "https://www.youtube.com/watch?v=sqNwDkUU_Ps",
   },
   {
     id: "push-3",
+    name: "Aperturas en máquina",
+    sets: 3,
+    reps: "10-12",
+    rest: "1-1.5 min",
+    description:
+      "Aislamiento de pecho (pec deck / butterfly) para rematar con estirón y apriete.",
+    tips: [
+      "Codos ligeramente flexionados y fijos; no conviertas el movimiento en press.",
+      "Abre solo hasta sentir el pecho; no fuerces detrás del plano del torso.",
+      "Aprieta al cerrar 1 segundo; carga moderada con control.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=H4mVGHaK2f4",
+  },
+  {
+    id: "push-4",
+    name: "Extensiones de tríceps en polea con soga",
+    sets: 3,
+    reps: "10-12",
+    rest: "1-1.5 min",
+    description:
+      "Pushdown con soga: aislamiento de tríceps con buen apriete al final de cada rep.",
+    tips: [
+      "Codos fijos al costado; solo mueve el antebrazo.",
+      "Abajo separa ligeramente las puntas de la soga y aprieta el tríceps.",
+      "Si se abren los codos o balanceas el tronco, baja la carga.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=vB5OHsJ3EME",
+  },
+  {
+    id: "push-5",
+    name: "Extensiones de tríceps tras nuca en polea",
+    sets: 3,
+    reps: "10-12",
+    rest: "1-1.5 min",
+    description:
+      "Extensión overhead en polea: enfatiza la cabeza larga del tríceps con buen estirón.",
+    tips: [
+      "Codos cerca de las orejas; no los abras hacia los lados.",
+      "Baja la barra/cuerda detrás de la cabeza con control y extiende sin impulso.",
+      "Core firme; evita arquear la lumbar para ayudar.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=ns-RGsbzqok",
+  },
+  {
+    id: "push-6",
+    name: "Extensión de tríceps en polea a una mano",
+    sets: 3,
+    reps: "10-12/brazo",
+    rest: "1-1.5 min",
+    description:
+      "Pushdown unilateral para equilibrar ambos brazos y rematar el tríceps.",
+    tips: [
+      "Codo pegado al cuerpo; torso quieto (no gires para ayudar).",
+      "Extiende completo y sube en 2–3 segundos.",
+      "Mismo rango y carga en ambos brazos; si uno falla la forma, baja peso.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=0CeC53ruBdU",
+  },
+  {
+    id: "push-7",
     name: "Press militar mancuernas",
     sets: 3,
     reps: "7-10",
     rest: "2-3 min",
     description:
-      "Press de hombros de pie o sentado para deltoides y estabilización del core.",
+      "Press de hombros sentado o de pie para deltoides; el tríceps ya viene fatigado, prioriza técnica.",
     tips: [
-      "Core firme; no arquees la lumbar para empujar el peso.",
-      "Empuja en línea vertical; baja controlado a la altura de las orejas/hombros.",
-      "Si necesitas impulso de piernas o espalda, el peso es demasiado.",
+      "Core firme; no arquees la lumbar para empujar.",
+      "Empuja en línea vertical; baja controlado a orejas/hombros.",
+      "Carga más ligera que en un día fresco de hombros: aquí manda la forma.",
     ],
     videoUrl: "https://www.youtube.com/watch?v=qEwKCR5JCog",
   },
   {
-    id: "push-4",
+    id: "push-8",
     name: "Elevaciones laterales",
-    sets: 4,
+    sets: 3,
     reps: "10-15",
     rest: "0.75-1 min",
     description:
@@ -336,24 +507,9 @@ const pushExercises: Exercise[] = [
     tips: [
       "Codos ligeramente flexionados; sube a la altura del hombro.",
       "Sin impulso de tronco: si balanceas, baja el peso.",
-      "Aquí manda el control; mejor 10–15 limpios que mancuernas pesadas con trampa.",
+      "Mejor 10–15 limpios que mancuernas pesadas con trampa.",
     ],
     videoUrl: "https://www.youtube.com/watch?v=3VcKaXpzqRo",
-  },
-  {
-    id: "push-5",
-    name: "Extensiones de tríceps polea",
-    sets: 3,
-    reps: "10-12",
-    rest: "1-1.5 min",
-    description:
-      "Extensión de codo en polea para tríceps, remate de empuje con bombeo.",
-    tips: [
-      "Codos fijos al costado; solo mueve el antebrazo.",
-      "Extiende del todo sin bloquear de golpe; controla la vuelta.",
-      "Peso para quemazón limpia; si se abren los codos, reduce carga.",
-    ],
-    videoUrl: "https://www.youtube.com/watch?v=2-LAMcpzODU",
   },
 ];
 
@@ -367,6 +523,7 @@ const pullExercises: Exercise[] = [
     description:
       "Tirón vertical para dorsal y espalda alta; base de ancho de espalda.",
     tips: [
+      "Antes de las series efectivas, haz 1–2 series de calentamiento con ~50–70% del peso de trabajo.",
       "Lleva la barra al pecho alto; pecho arriba y hombros abajo.",
       "No te balancees hacia atrás: el movimiento es de espalda, no de impulso.",
       "Carga para 7–10 con control; si solo tiras con brazos, baja peso y aprieta dorsal.",
@@ -375,21 +532,36 @@ const pullExercises: Exercise[] = [
   },
   {
     id: "pull-2",
-    name: "Remo con barra",
+    name: "Remo pecho apoyado en máquina (agarre prono ancho)",
     sets: 4,
     reps: "7-10",
     rest: "2-3 min",
     description:
-      "Tirón horizontal compuesto para grosor de espalda y fuerza de remo.",
+      "Remo sentado con pecho al pad y torso erguido: agarre prono ancho (palmas abajo) para espalda alta y deltoides posteriores.",
     tips: [
-      "Espalda neutra; tira con los codos hacia la cadera/cintura.",
-      "No redondees la lumbar ni uses demasiado impulso de torso.",
-      "Peso serio en 7–10: cada rep debe llegar con control, no con rebote.",
+      "Torso erguido; pecho pegado al pad de la máquina en todo momento.",
+      "Agarre prono ancho: manijas horizontales, palmas hacia abajo (no el agarre neutro).",
+      "Codos atrás con el brazo casi paralelo al suelo; aprieta escápulas sin despegarte del pad.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=9efgcAjQe7E",
+    videoUrl: "https://www.youtube.com/watch?v=S3vT0sDakE0",
   },
   {
     id: "pull-3",
+    name: "Remo unilateral con mancuerna",
+    sets: 3,
+    reps: "8-10/brazo",
+    rest: "1.5-2 min",
+    description:
+      "Remo a una mano con apoyo en banco: dorsal y espalda media, corrige desequilibrios.",
+    tips: [
+      "Espalda neutra y paralela al suelo; no gires el tronco al subir.",
+      "Tira el codo hacia la cadera/costillas; muñeca neutra.",
+      "Mismo rango en ambos brazos; si uno falla la forma, baja peso.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=pYcpY20QaE8",
+  },
+  {
+    id: "pull-4",
     name: "Face pulls",
     sets: 3,
     reps: "12-15",
@@ -397,26 +569,56 @@ const pullExercises: Exercise[] = [
     description:
       "Tirón a la cara en polea para deltoides posteriores y salud de hombro.",
     tips: [
-      "Tira hacia la cara/frente; rotación externa al final (nudillos atrás).",
-      "Codos altos; no bajes el movimiento a un remo de espalda media.",
-      "Carga ligera-media: aquí la calidad del apriete importa más que el peso.",
+      "Polea alta; tira hacia la cara con rotación externa (nudillos atrás).",
+      "Codos altos; no conviertas el movimiento en un remo de espalda media.",
+      "Carga ligera-media: aquí manda la calidad del apriete, no el stack.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=rep-a27HhMw",
+    videoUrl: "https://www.youtube.com/watch?v=ljgqer1ZpXg",
   },
   {
-    id: "pull-4",
-    name: "Curl bíceps mancuernas",
+    id: "pull-5",
+    name: "Curl inclinado con mancuernas",
     sets: 3,
     reps: "8-12",
     rest: "1-1.5 min",
     description:
-      "Flexión de codo con mancuernas para bíceps con buen control bilateral.",
+      "Curl en banco inclinado (~45°): estirón del bíceps en posición alargada.",
     tips: [
-      "Codos pegados al cuerpo; no balancees el tronco.",
-      "Sube sin impulso y baja en 2–3 segundos.",
-      "Últimas reps difíciles con forma limpia; si necesitas columpiarte, baja peso.",
+      "Brazos cuelgan detrás de la línea del torso; espalda pegada al banco.",
+      "Codos fijos; no adelantes los hombros al subir.",
+      "Baja en 2–3 segundos hasta estirón cómodo; últimas reps limpia.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=ykJmrZ5v0Oo",
+    videoUrl: "https://www.youtube.com/watch?v=soxrZlIl35U",
+  },
+  {
+    id: "pull-6",
+    name: "Curl en predicador en máquina",
+    sets: 3,
+    reps: "8-12",
+    rest: "1-1.5 min",
+    description:
+      "Curl en máquina Scott: aislamiento estricto de bíceps con trayectoria guiada y pad de apoyo.",
+    tips: [
+      "Ajusta el asiento: axilas ancladas al borde del pad; brazos pegados todo el recorrido.",
+      "Muñecas alineadas con codos; sube con control y aprieta arriba sin despegar los brazos.",
+      "Baja lento sin hiperextender el codo; si balanceas o se abren los codos, reduce carga.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=jGhd1pIcQ74",
+  },
+  {
+    id: "pull-7",
+    name: "Curl martillo con mancuernas",
+    sets: 3,
+    reps: "8-12",
+    rest: "1-1.5 min",
+    description:
+      "Curl con agarre neutro: bíceps y braquial, buen remate de brazo.",
+    tips: [
+      "Agarre neutro; controla la bajada.",
+      "Codos fijos; no abras el movimiento hacia los lados.",
+      "Últimas 2 reps exigentes sin balanceo; baja el peso si rompes la forma.",
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=zC3nLlEvin4",
   },
 ];
 
@@ -431,6 +633,7 @@ const upperBodyExercises: Exercise[] = [
     description:
       "Remo guiado sentado para espalda media y control escapular en el día Upper.",
     tips: [
+      "Antes de las series efectivas, haz 1–2 series de calentamiento con ~50–70% del peso de trabajo.",
       "Pecho alto; tira con los codos hacia atrás.",
       "No redondees hombros al frente al soltar; controla la extensión.",
       "Peso que permita apretar escápulas en cada rep del rango 7–10.",
@@ -507,7 +710,7 @@ export const routineDays: RoutineDay[] = [
     focus: "Legs",
     detail: "Glúteos / Isquios",
     summary:
-      "Calienta 5 min y estira isquios antes del RDL. En hip thrust prioriza el apriete arriba, no el peso.",
+      "Calienta 5 min y estira isquios/glúteos antes del RDL. En hip thrust prioriza el apriete arriba, no el peso. Cierra con crunch en polea y plancha lateral.",
     exercises: legsGluteIsquio,
   },
   {
@@ -517,7 +720,7 @@ export const routineDays: RoutineDay[] = [
     focus: "Pull",
     detail: "Espalda / Bíceps",
     summary:
-      "Activa escápulas con face pulls ligeros. En remo no redondees la lumbar; tira con los codos.",
+      "Calienta 5 min y estira dorsales/hombros antes del jalón. En face pulls prioriza rotación externa. Curls: inclinado, predicador y martillo.",
     exercises: pullExercises,
   },
   {
@@ -527,7 +730,7 @@ export const routineDays: RoutineDay[] = [
     focus: "Legs",
     detail: "Cuádriceps / Fuerza",
     summary:
-      "Movilidad de tobillo y cadera antes del Hack. No bloquees las rodillas en prensa ni extensiones.",
+      "Calienta 5 min y movilidad de tobillo/cadera antes del Hack. No bloquees las rodillas en prensa ni extensiones. Cierra con elevaciones de rodillas y Pallof en polea.",
     exercises: legsCuadFuerza,
   },
   {
@@ -535,9 +738,9 @@ export const routineDays: RoutineDay[] = [
     number: 4,
     label: "Día 4",
     focus: "Push",
-    detail: "Pecho / Hombros / Tríceps",
+    detail: "Pecho / Tríceps / Hombros",
     summary:
-      "Escápulas estables en press. Laterales con poco peso y sin impulso de tronco.",
+      "Calienta 5 min y estira pecho/hombros antes del press. En tríceps fija los codos. En militar usa carga moderada: el tríceps ya viene fatigado.",
     exercises: pushExercises,
   },
   {
@@ -547,7 +750,7 @@ export const routineDays: RoutineDay[] = [
     focus: "Legs",
     detail: "Completo / Volumen",
     summary:
-      "Sesión más ligera: rango completo y buena técnica. Hidrátate entre series y controla las zancadas.",
+      "Calienta 5 min y movilidad de cadera/cuádriceps antes del goblet. Pierna completa en volumen; cierra con rueda abdominal y bicycle crunch.",
     exercises: legsCompletoVolumen,
   },
   {
@@ -557,7 +760,7 @@ export const routineDays: RoutineDay[] = [
     focus: "Upper",
     detail: "Tren superior",
     summary:
-      "Equilibra empuje y tirón. Si fatigas, prioriza remo y press antes que los aislados.",
+      "Calienta 5 min y estira espalda/pecho/hombros antes del remo. Equilibra empuje y tirón; si fatigas, prioriza remo y press antes que los aislados.",
     exercises: upperBodyExercises,
   },
 ];
