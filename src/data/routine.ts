@@ -380,19 +380,19 @@ const legsCompletoVolumen: Exercise[] = [
 const pushExercises: Exercise[] = [
   {
     id: "push-1",
-    name: "Press pecho alto en máquina",
+    name: "Press pecho alto con mancuernas",
     sets: 4,
     reps: "7-10",
     rest: "2-3 min",
     description:
-      "Press inclinado guiado para pecho superior (clavicular) con trayectoria estable.",
+      "Press inclinado con mancuernas (~30–45°): pecho superior (clavicular) con rango natural y estabilizadores.",
     tips: [
       "Antes de las series efectivas, haz 1–2 series de calentamiento con ~50–70% del peso de trabajo.",
-      "Ajusta el asiento para que las manijas queden a la altura del pecho alto.",
-      "Escápulas pegadas al respaldo; no dejes que los hombros se adelanten.",
-      "Empuja con control; últimas reps duras sin rebotar ni acortar el rango.",
+      "Banco a 30–45°; escápulas pegadas al respaldo; glúteos firmes en el asiento.",
+      "Baja controlado hasta cerca del pecho alto; codos ~45° respecto al torso.",
+      "Empuja sin chocar las mancuernas arriba; últimas reps duras con rango completo.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=whaV86_J6HY",
+    videoUrl: "https://www.youtube.com/watch?v=hChjZQhX1Ls",
   },
   {
     id: "push-2",
@@ -615,18 +615,18 @@ const upperBodyExercises: Exercise[] = [
   },
   {
     id: "upper-2",
-    name: "Press pecho alto en máquina",
+    name: "Press pecho alto con mancuernas",
     sets: 4,
     reps: "7-10",
     rest: "2-3 min",
     description:
-      "Press inclinado guiado para pecho superior (clavicular) con trayectoria estable.",
+      "Press inclinado con mancuernas (~30–45°): pecho superior (clavicular) con rango natural y estabilizadores.",
     tips: [
-      "Ajusta el asiento para que las manijas queden a la altura del pecho alto.",
-      "Escápulas pegadas al respaldo; no dejes que los hombros se adelanten.",
-      "Empuja con control; últimas reps duras sin rebotar ni acortar el rango.",
+      "Banco a 30–45°; escápulas pegadas al respaldo; glúteos firmes en el asiento.",
+      "Baja controlado hasta cerca del pecho alto; codos ~45° respecto al torso.",
+      "Empuja sin chocar las mancuernas arriba; últimas reps duras con rango completo.",
     ],
-    videoUrl: "https://www.youtube.com/watch?v=whaV86_J6HY",
+    videoUrl: "https://www.youtube.com/watch?v=hChjZQhX1Ls",
   },
   {
     id: "upper-3",
